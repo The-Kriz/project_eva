@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+
+    <xacro:include filename="inertial_macros.xacro"/>
+
+    <xacro:macro name="profile_channel" params="parent child profile_mass profile_length profile_width profile_height xyz rpy">
+
+        <link name="${child}">
+            <visual>
+                <geometry>
+                    <box size="${profile_length} ${profile_width} ${profile_height}"/> 
+                </geometry>
+                <material name="black">
+                    <color rgba="0.80 0.80 0.80 1.0"/>
+                </material>
+            </visual>
+
+            <collision>
+                <geometry>
+                    <box size="${profile_length} ${profile_width} ${profile_height}"/>
+                </geometry>
+            </collision>
+
+            <xacro:inertial_box mass="${profile_mass}" x="${profile_length}" y="${profile_width}" z="${profile_height}">
+                <origin xyz="${profile_length/2} 0 ${profile_height/2}" rpy="${rpy}"/>
+            </xacro:inertial_box>
+        </link>
+
+        <joint name="${parent}_to_${child}_joint" type="fixed">
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <parent link="${parent}" />
+            <child link="${child}" />
+        </joint>
+
+        <gazebo reference = "${child}">
+            <material>Gazebo/Black</material> 
+        </gazebo>
+
+    </xacro:macro>
+
+</robot>

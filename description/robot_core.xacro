@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <xacro:include filename="profile_channel.xacro"/>
+
+
+    <link name="base_link"></link>
+    
+    <xacro:property name="Chassis_profile_size" value="0.02"/>
+    <xacro:property name="Chassis_profile_length" value="0.560"/>
+    <xacro:property name="Chassis_side_profile_length" value="0.090"/>
+    <xacro:property name="motor_support_profile_length" value="0.485"/>
+
+
+
+    <xacro:profile_channel parent="base_link" child="front_bottom_profile_channel" profile_mass="0.002" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290   0.00  0.00"   rpy="0 0 -1.57" />
+    <xacro:profile_channel parent="base_link" child="back_bottom_profile_channel"  profile_mass="0.002" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290   0.00  0.00"    rpy="0 0 -1.57" />
+    <xacro:profile_channel parent="base_link" child="left_bottom_profile_channel"  profile_mass="0.002" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0     0.290 0.00"  rpy="0 0 0" />
+    <xacro:profile_channel parent="base_link" child="right_bottom_profile_channel" profile_mass="0.002" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0    -0.290 0.00"  rpy="0 0 0" />
+
+    <xacro:profile_channel parent="base_link" child="front_top_profile_channel" profile_mass="0.002" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290   0.00  0.070"   rpy="0 0 -1.57" />
+    <xacro:profile_channel parent="base_link" child="back_top_profile_channel"  profile_mass="0.002" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290   0.00  0.070"    rpy="0 0 -1.57" />
+    <xacro:profile_channel parent="base_link" child="left_top_profile_channel"  profile_mass="0.002" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0     0.290 0.070"  rpy="0 0 0" />
+    <xacro:profile_channel parent="base_link" child="right_top_profile_channel" profile_mass="0.002" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0    -0.290 0.070"  rpy="0 0 0" />
+
+    <xacro:profile_channel parent="base_link" child="front_left_side_support_profile_channel"   profile_mass="0.002" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290   0.290  0.035" rpy="0 -1.57 0"/>
+    <xacro:profile_channel parent="base_link" child="front_right_side_support_profile_channel"  profile_mass="0.002" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290  -0.290  0.035" rpy="0 -1.57 0"/>
+    <xacro:profile_channel parent="base_link" child="back_left_side_support_profile_channel"    profile_mass="0.002" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290   0.290  0.035"  rpy="0 -1.57 0"/>
+    <xacro:profile_channel parent="base_link" child="back_right_side_support_profile_channel"   profile_mass="0.002" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290  -0.290  0.035"  rpy="0 -1.57 0"/>
+
+    <xacro:profile_channel parent="base_link" child="front_bottom_motor_support_profile_channel" profile_mass="0.002" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.205   0.0475  0.00"   rpy="0 0 -1.57"/>
+    <xacro:profile_channel parent="base_link" child="back_bottom_motor_support_profile_channel"  profile_mass="0.002" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.205  -0.0475  0.00"   rpy="0 0 -1.57"/>
+    <xacro:profile_channel parent="base_link" child="left_bottom_motor_support_profile_channel"  profile_mass="0.002" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0475 -0.205   0.00"   rpy="0 0 0" />
+    <xacro:profile_channel parent="base_link" child="right_bottom_motor_support_profile_channel" profile_mass="0.002" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.0475  0.205   0.00"   rpy="0 0 0" />
+
+    <xacro:profile_channel parent="base_link" child="front_top_motor_support_profile_channel"    profile_mass="0.002" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.205   0.0475  0.070"  rpy="0 0 -1.57"/>
+    <xacro:profile_channel parent="base_link" child="back_top_motor_support_profile_channel"     profile_mass="0.002" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.205  -0.0475  0.070"  rpy="0 0 -1.57"/>
+    <xacro:profile_channel parent="base_link" child="left_top_motor_support_profile_channel"     profile_mass="0.002" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0475 -0.205   0.070"  rpy="0 0 0"/>
+    <xacro:profile_channel parent="base_link" child="right_top_motor_support_profile_channel"    profile_mass="0.002" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.0475  0.205   0.070"  rpy="0 0 0"/>
+
+
+</robot> 

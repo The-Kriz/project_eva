@@ -24,7 +24,7 @@
             </collision>
 
             <xacro:inertial_box mass="${profile_mass}" x="${profile_length}" y="${profile_width}" z="${profile_height}">
-                <origin xyz="${profile_length/2} 0 ${profile_height/2}" rpy="${rpy}"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
             </xacro:inertial_box>
         </link>
 

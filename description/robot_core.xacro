@@ -2,7 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
     <xacro:include filename="profile_channel.xacro"/>
-    <xacro:include filename="wheel.xacro"/>
+    <xacro:include filename="omni_wheel.xacro"/>
+    <!--<xacro:include filename="wheel.xacro"/>-->
 
     <!-- Base Link -->
 

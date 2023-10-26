@@ -14,7 +14,7 @@
             <visual name="">
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <geometry>
-                    <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+                    <mesh filename="file://$(find project_eva)/meshes/wheel_roller.STL"/>
                 </geometry>
                 <material name="black">
                     <color rgba="0.0 0.0 0.0 1.0"/>

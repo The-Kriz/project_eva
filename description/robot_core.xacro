@@ -49,4 +49,12 @@
     <xacro:omni_wheel parent="base_link" child="left"   xyz="-0.205  0.255 0.035"   rpy="-1.57  0    0.0"/>
     <xacro:omni_wheel parent="base_link" child="right"  xyz=" 0.205 -0.255 0.035"   rpy=" 1.57  0    0.0"/>
 
+    <!-- Wheels-->
+
+    <!-- <xacro:wheel parent="base_link" child="front"  xyz=" 0.245   0.205 0.035"  rpy=" 0.0   1.57 0.0 "/>
+    <xacro:wheel parent="base_link" child="back"   xyz="-0.245  -0.205 0.035"  rpy=" 0.0  -1.57 0.0"/>
+    <xacro:wheel parent="base_link" child="left"   xyz="-0.205  0.245 0.035"   rpy="-1.57  0    0.0"/>
+    <xacro:wheel parent="base_link" child="right"  xyz=" 0.205 -0.245 0.035"   rpy=" 1.57  0    0.0"/> -->
+
+
 </robot> 

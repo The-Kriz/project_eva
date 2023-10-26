@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <xacro:include filename="inertial_macros.xacro"/>
 
@@ -15,7 +15,7 @@
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <geometry>
                     <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
-                    <!--<mesh filename="file://$(find project_eva)/meshes/omni_wheel.STL"/>-->
+                    <!-- <mesh filename="file://$(find project_eva)/meshes/omni_wheel.STL"/> -->
                 </geometry>
                 <material name="black">
                     <color rgba="0.0 0.0 0.0 1.0"/>
@@ -35,8 +35,10 @@
             </xacro:inertial_cylinder>
         </link>
 
-        <gazebo reference = "wheel_${child}_link">
+        <gazebo reference = "${child}_wheel_link">
             <material>Gazebo/Black</material> 
+            <!-- <mu1 value="0.001"/>
+            <mu2 value="0.001"/> -->
         </gazebo>
 
         <joint name="${child}_wheel_joint" type="continuous">

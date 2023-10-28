@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
     <xacro:include filename="profile_channel.xacro"/>
-    <!-- <xacro:include filename="omni_wheel.xacro"/> -->
+    <xacro:include filename="omni_wheel.xacro"/>
     <xacro:include filename="wheel.xacro"/>
 
 
@@ -48,17 +48,17 @@
 
     <!-- Omni Wheels-->
 
-    <!-- <xacro:omni_wheel parent="base_link" child="front_left"  xyz=" 0.255   0.205 0.035"  rpy=" 0.0   1.57 0.0 "/>
+    <xacro:omni_wheel parent="base_link" child="front_left"  xyz=" 0.255   0.205 0.035"  rpy=" 0.0   1.57 0.0 "/>
     <xacro:omni_wheel parent="base_link" child="back_right"   xyz="-0.255  -0.205 0.035"  rpy=" 0.0  -1.57 0.0"/>
     <xacro:omni_wheel parent="base_link" child="back_left"   xyz="-0.205  0.255 0.035"   rpy="-1.57  0    0.0"/>
-    <xacro:omni_wheel parent="base_link" child="front_right"  xyz=" 0.205 -0.255 0.035"   rpy=" 1.57  0    0.0"/> -->
+    <xacro:omni_wheel parent="base_link" child="front_right"  xyz=" 0.205 -0.255 0.035"   rpy=" 1.57  0    0.0"/>
 
     <!-- Wheels-->
 
-    <xacro:wheel parent="base_link" child="front_left"  xyz=" 0.245   0.205 0.035"  rpy=" 0.0   1.57 0.0 "/>
+    <!--<xacro:wheel parent="base_link" child="front_left"  xyz=" 0.245   0.205 0.035"  rpy=" 0.0   1.57 0.0 "/>
     <xacro:wheel parent="base_link" child="back_right"   xyz="-0.245  -0.205 0.035"  rpy=" 0.0  -1.57 0.0"/>
     <xacro:wheel parent="base_link" child="back_left"   xyz="-0.205  0.245 0.035"   rpy="-1.57  0    0.0"/>
-    <xacro:wheel parent="base_link" child="front_right"  xyz=" 0.205 -0.245 0.035"   rpy=" 1.57  0    0.0"/>
+    <xacro:wheel parent="base_link" child="front_right"  xyz=" 0.205 -0.245 0.035"   rpy=" 1.57  0    0.0"/>-->
 
 
 </robot> 

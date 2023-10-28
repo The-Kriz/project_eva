@@ -19,11 +19,10 @@ experiences through a combination of advanced AI technology and automated contro
 ### 1.2 Run
 
 #### 1.2.1 Run Robot State Publisher
-    ros2 launch project_eva rsp.launch.py
+    ros2 launch project_eva rsp.launch.py use_sim_time:=true use_omni_wheel:=true
     
 #### 1.2.2 Run Robot Simulation
-    ros2 launch project_eva launch_sim.launch.py 
-
+    ros2 launch project_eva launch_sim.launch.py use_sim_time:=true use_omni_wheel:=true 
 
 ## 2 Rviz
 

@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <gazebo>
+        <plugin name="skid_steer_drive" filename="libgazebo_ros_diff_drive.so">
+            <num_wheel_pairs>2</num_wheel_pairs>
+
+            <left_joint>front_wheel_joint</left_joint>
+            <right_joint>back_wheel_joint</right_joint>
+
+            <left_joint>left_wheel_joint</left_joint>
+            <right_joint>right_wheel_joint</right_joint>
+
+            <wheel_separation>0.51</wheel_separation>
+            <wheel_separation>0.51</wheel_separation>
+
+            <wheel_diameter>0.127</wheel_diameter>
+            <wheel_diameter>0.127</wheel_diameter>
+
+            <max_wheel_torque>50</max_wheel_torque>
+            <max_wheel_acceleration>10.0</max_wheel_acceleration>
+
+            <odometry_frame>odom</odometry_frame>
+            <robot_base_frame>base_link</robot_base_frame>
+
+            <publish_odom>true</publish_odom> 
+            <publish_odom_tf>true</publish_odom_tf> 
+            <publish_wheel_tf>true</publish_wheel_tf> 
+        </plugin>
+    </gazebo>
+
+
+
+    <!-- <gazebo>
+        <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+
+            <left_joint>front_wheel_joint</left_joint>
+            <right_joint>back_wheel_joint</right_joint>
+            <wheel_separation>0.51</wheel_separation>
+            <wheel_diameter>0.127</wheel_diameter>
+
+            <max_wheel_torque>200</max_wheel_torque>
+            <max_wheel_acceleration>10.0</max_wheel_acceleration>
+
+            <odometry_frame>odom</odometry_frame>
+            <robot_base_frame>base_link</robot_base_frame>
+
+            <publish_odom>true</publish_odom>
+            <publish_odom_tf>true</publish_odom_tf>
+            <publish_wheel_tf>true</publish_wheel_tf>
+
+        </plugin>
+    </gazebo> -->
+
+
+    <!-- <gazebo>
+        <plugin name="gazebo_ros_mecanum_diff_drive" filename="libgazebo_ros_mecanum_drive.so">
+            
+            <LeftRear>front_wheel_joint</LeftRear>
+            <LeftFront>back_wheel_joint</LeftFront>
+            <RightFront>left_wheel_joint</RightFront>
+            <RightRear>right_wheel_joint</RightRear>
+
+            <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
+            <robotBaseFrame>base_link</robotBaseFrame>
+            <odometryRate>20</odometryRate>      
+            <publishWheelTF>true</publishWheelTF>
+            <publishWheelJointState>true</publishWheelJointState>
+            <WheelTorque>5</WheelTorque>
+            <WheelSeparationW>0.51</WheelSeparationW>
+            <WheelSeparationL>0.51</WheelSeparationL>
+            <wheelAccel>5</wheelAccel>
+            <wheelDiameter>0.13</wheelDiameter>
+            <publishOdom>true</publishOdom>
+            <isRollerModel>true</isRollerModel>
+
+        </plugin>
+    </gazebo> -->
+
+
+
+</robot> 
+

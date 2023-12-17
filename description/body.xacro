@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="inertial_macros.xacro"/>
+
+    <link name="crotch">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 1.57"/>
+            <geometry>
+                <mesh filename="file://$(find project_eva)/meshes/EVA/crotch.STL"/>
+            </geometry>
+            <material name="jeans">
+                <color rgba="${66/255} ${93/255} ${140/255} 1.0"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.09" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.20 0.286 0.020"/>
+            </geometry>
+            <material name="black">
+            </material>
+        </collision>
+
+        <xacro:inertial_box mass="0.2" x="0.20" y="0.20" z="0.286">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name="crotch_joint" type="fixed">
+        <parent link="EVA_base_link"/>
+        <child link="crotch"/>
+        <origin xyz="0 0 0.59" rpy="0 0 0" />
+    </joint>
+
+    <link name="body">
+
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 1.57"/>
+            <geometry>
+                <mesh filename="file://$(find project_eva)/meshes/EVA/body.STL"/>
+            </geometry>
+            <material name="Top">
+                <color rgba="${48/255} ${104/255} ${68/255} 1.0"/>
+            </material>
+        </visual>
+
+        <collision>
+                <origin xyz="0.0 0.0 0.2483" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.20 0.286 0.4966"/>
+                </geometry>
+        </collision>
+
+        <xacro:inertial_box mass="0.2" x="0.49658" y="0.20" z="0.286">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name="body_joint" type="fixed">
+        <parent link="crotch"/>
+        <child link="body"/>
+        <origin xyz="0 0 0.103" rpy="0 0 0" />
+    </joint>
+
+    <link name="neck">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="1.57 0 1.57"/>
+            <geometry>
+                <mesh filename="file://$(find project_eva)/meshes/EVA/neck.STL"/>
+            </geometry>
+            <material name="skin">
+                <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>
+            </material>
+        </visual>
+
+        <collision>
+                <origin xyz="0.0 0.0 0.027" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="0.03" length="0.054"/>
+                </geometry>
+        </collision>
+
+        <xacro:inertial_cylinder mass="0.2" length="0.054" radius="0.03">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <joint name="neck_joint" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit effort="0.1" lower="-1" upper="1" velocity="0.2"/>
+        <parent link="body"/>
+        <child link="neck"/>
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+    </joint>
+
+    <link name="chin">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="1.57 0 1.57"/>
+            <geometry>
+                <mesh filename="file://$(find project_eva)/meshes/EVA/chin.STL"/>
+            </geometry>
+            <material name="skin">
+                <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>
+            </material>
+        </visual>
+
+        <collision>
+                <origin xyz="0.0 0.0 0.08" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <sphere radius="0.1"/>
+                </geometry>
+        </collision>
+
+        <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <joint name="head_joint" type="revolute">
+        <axis xyz="0 1 0"/>
+        <limit effort="0.1" lower="-.51" upper="0.38" velocity="0.2"/>
+        <parent link="neck"/>
+        <child link="chin"/>
+        <origin xyz="0 0 0.054" rpy="0 0 0" />
+    </joint>
+
+</robot>

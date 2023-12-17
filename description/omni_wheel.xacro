@@ -8,7 +8,7 @@
             <visual>
                 <origin xyz="0 0 0" rpy="1.57 0 0" />
                 <geometry>
-                    <mesh filename="file://$(find project_eva)/meshes/wheel_roller.STL"/>
+                    <mesh filename="file://$(find project_eva)/meshes/Drive/wheel_roller.STL"/>
                 </geometry>
                 <material name="wheel_rubber">
                     <color rgba="0 0 0 1" />
@@ -18,17 +18,13 @@
             <collision>
                 <origin xyz="0 0 0" rpy="1.57 0 0" />
                 <geometry>
-                    <mesh filename="file://$(find project_eva)/meshes/wheel_roller.STL"/>
+                    <sphere radius="0.0095"/>
                 </geometry>
             </collision>
 
-            <inertial>
-                <origin xyz="5.09395238803556E-16 6.79977710486667E-16 -0.0104983350650447" rpy="1.57 0 0" />
-                <mass value="0.002" />
-                <inertia ixx="0.000781592793267822" ixy="1.05247463532391E-18" ixz="-6.56787240457889E-19"
-                         iyy="0.000781592793267821" iyz="-1.19446449980815E-19"
-                         izz="0.0014442649663699" />
-            </inertial>
+            <xacro:inertial_cylinder mass="0.005" length="0.018" radius="0.0095">
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+            </xacro:inertial_cylinder>
         </link>
 
         <joint name="${parent}_${child}_joint" type="continuous">
@@ -51,7 +47,7 @@
             <visual>
                 <origin xyz="${xyz}" rpy="${rpy}"/>
                 <geometry>
-                    <mesh filename="file://$(find project_eva)/meshes/wheel_link.STL"/>
+                    <mesh filename="file://$(find project_eva)/meshes/Drive/wheel_link.STL"/>
                 </geometry>
                 <material name="">
                     <color rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
@@ -61,13 +57,13 @@
             <collision>
                 <origin xyz="${xyz}" rpy="${rpy}"/>
                 <geometry>
-                    <mesh filename="file://$(find project_eva)/meshes/wheel_link.STL"/>
+                    <mesh filename="file://$(find project_eva)/meshes/Drive/wheel_link.STL"/>
                 </geometry>
             </collision>
 
             <inertial>
-                <origin xyz="5.09395238803556E-16 6.79977710486667E-16 -0.0104983350650447" rpy="${rpy}" />
-                <mass value="0.25" />
+                <origin xyz="0 0 -0.0045" rpy="${rpy}" />
+                <mass value="0.1625" />
                 <inertia ixx="0.000781592793267822" ixy="7.25426890587709E-19" ixz="-6.09681598211934E-19"
                         iyy="0.000781592793267821" iyz="-1.67393264409733E-19"
                         izz="0.0014442649663699" />

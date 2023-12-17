@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="inertial_macros.xacro"/>
+
+    <xacro:macro name="sholder" params="parent child v_rpy c_xyz o_xyz o_rpy">
+        <link name="${child}_sholder">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="${v_rpy}"/>
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/sholder.STL"/>
+                </geometry>
+                <material name="Top">
+                    <color rgba="${48/255} ${104/255} ${68/255} 1.0"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="${c_xyz}" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.070 0.080 0.050 "/> 
+                </geometry>
+            </collision>
+
+            <xacro:inertial_box mass="0.3" x="0.070" y="0.080" z="0.050">
+                <origin xyz="${c_xyz}" rpy="0.0 0.0 0.0"/>
+            </xacro:inertial_box>
+        </link>
+
+        <joint name="${child}_arm_joint" type="revolute">
+            <axis xyz="0 1 0"/>
+            <limit effort="0.1" lower="-2.0" upper="0.51" velocity="0.2"/>
+            <origin xyz="${o_xyz}" rpy="${o_rpy}"/>
+            <parent link="${parent}" />
+            <child link="${child}_sholder" />
+        </joint>       
+    </xacro:macro>
+
+    <xacro:macro name="upper_biceps" params="side lower upper o_xyz">
+        <link name="${side}_upper_biceps">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/upper_biceps.STL"/>
+                </geometry>
+                <material name="skin">
+                    <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0.0 0.0 -0.0450" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="0.038" length="0.090"/>
+                </geometry>
+            </collision>
+
+            <xacro:inertial_cylinder mass="0.03" radius="0.038"  length="0.090" >
+                <origin xyz="0.0 0.0 -0.0450" rpy="0.0 0.0 0.0"/>
+            </xacro:inertial_cylinder>
+
+        </link>
+
+        <joint name="${side}_sholder_joint" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="0.1" lower="${lower}" upper="${upper}" velocity="0.2"/>
+            <origin xyz="${o_xyz}" rpy="0 0 0" />
+            <parent link="${side}_sholder" />
+            <child link="${side}_upper_biceps" />
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="lower_biceps" params="side lower upper">
+        <link name="${side}_lower_biceps">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="-0.07 0 0"/>
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/lower_biceps.STL"/>
+                </geometry>
+                <material name="skin">
+                    <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0.0 0.0 -0.0915" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="0.038" length="0.1830"/>
+                </geometry>
+            </collision>
+
+            <xacro:inertial_cylinder mass="0.03" radius="0.038" length="0.1830">
+                <origin xyz="0.0 0.0 -0.0915" rpy="0.0 0.0 0.0"/>
+            </xacro:inertial_cylinder>  
+        </link>
+
+        <joint name="${side}_biceps_joint" type="revolute">
+            <axis xyz="0 0 1"/>
+            <limit effort="0.1" lower="${lower}" upper="${upper}" velocity="0.2"/>
+            <origin xyz="0 0 -0.090" rpy="0 0 0" />
+            <parent link="${side}_upper_biceps" />
+            <child link="${side}_lower_biceps" />
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="elbow" params="side lower upper">
+        <link name="${side}_elbow">
+            <visual>
+                <origin xyz="0.0 -0.0015 0.0" rpy="0 0 0"/>
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/elbow.STL"/>
+                </geometry>
+                <material name="skin">
+                    <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0.0 0.0 -0.02175" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="0.038" length="0.0435"/>
+                </geometry>
+            </collision>
+
+            <xacro:inertial_cylinder mass="0.03" radius="0.038" length="0.0435" >
+                <origin xyz="0.0 0.0 0.02175" rpy="0.0 0.0 0.0"/>
+            </xacro:inertial_cylinder>
+        </link>
+
+        <joint name="${side}_elbow_joint" type="revolute">
+            <axis xyz="0 1 0"/>
+            <limit effort="0.1" lower="${lower}" upper="${upper}" velocity="0.2"/>
+            <origin xyz="0 0 -0.1830" rpy="0 0 0" />
+            <parent link="${side}_lower_biceps" />
+            <child link="${side}_elbow" />
+        </joint>
+    </xacro:macro>
+
+
+    <xacro:macro name="wrist" params="side lower upper">
+        <link name="${side}_wrist">
+            <visual>
+                <origin xyz="0.0 -0.003 0.0440" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/wrist.STL"/>
+                </geometry>
+                <material name="skin">
+                    <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0.0 0.0 -0.0827" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="0.030" length="0.1654"/>
+                </geometry>
+            </collision>
+
+            <xacro:inertial_cylinder mass="0.03" radius="0.030" length="0.1554" >
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+            </xacro:inertial_cylinder>
+
+        </link>
+
+        <joint name="${side}_wrist_joint" type="revolute">
+            <axis xyz="0 0 1"/>
+            <limit effort="0.1" lower="${lower}" upper="${upper}" velocity="0.2"/>
+            <origin xyz="0 0 -0.0435" rpy="0 0 0" />
+            <parent link="${side}_elbow" />
+            <child link="${side}_wrist" />
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="hand" params="side lower upper">
+        <link name="${side}_hand">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0 0 1.57"/>
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/hand.STL"/>
+                </geometry>
+                <material name="skin">
+                    <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0.0 0.0 -0.045" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.060 0.030 0.090"/> 
+                </geometry>
+            </collision>
+
+            <xacro:inertial_box mass="0.3" x="0.070" y="0.080" z="0.050">
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+            </xacro:inertial_box>
+
+        </link>
+
+        <joint name="${side}_hand_joint" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="0.1" lower="${lower}" upper="${upper}" velocity="0.2"/>
+            <origin xyz="0 0.002 -0.167" rpy="0 0 0" />
+            <parent link="${side}_wrist" />
+            <child link="${side}_hand" />
+        </joint>
+    </xacro:macro>
+    
+</robot>

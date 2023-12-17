@@ -5,11 +5,8 @@
 
     <!-- Base Link -->
 
-    <link name="base_link">            
-    </link>
-    
-    <link name="EVA_base_link">            
-    </link>
+    <link name="base_link"></link>
+    <link name="EVA_base_link"></link>
 
     <joint name="base_joint" type="fixed">
         <parent link="base_link"/>
@@ -17,60 +14,90 @@
         <origin xyz="0 0 0.140" rpy="0 0 0" />
     </joint>
 
-    <!-- Chassis profile Channels -->
+    <xacro:if value="$(arg use_drive)">
 
-    <xacro:property name="Chassis_profile_size" value="0.02"/>
-    <xacro:property name="Chassis_profile_length" value="0.560"/>
-    <xacro:property name="Chassis_side_profile_length" value="0.150"/>
-    <xacro:property name="motor_support_profile_length" value="0.485"/>
+        <!-- Chassis profile Channels -->
 
-    <xacro:profile_channel parent="base_link" child="front_bottom_profile_channel" profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290   0.00  0.00"   rpy="0 0 -1.57" />
-    <xacro:profile_channel parent="base_link" child="back_bottom_profile_channel"  profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290   0.00  0.00"    rpy="0 0 -1.57" />
-    <xacro:profile_channel parent="base_link" child="left_bottom_profile_channel"  profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0     0.290 0.00"  rpy="0 0 0" />
-    <xacro:profile_channel parent="base_link" child="right_bottom_profile_channel" profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0    -0.290 0.00"  rpy="0 0 0" />
+        <xacro:property name="Chassis_profile_size" value="0.02"/>
+        <xacro:property name="Chassis_profile_length" value="0.560"/>
+        <xacro:property name="Chassis_side_profile_length" value="0.150"/>
+        <xacro:property name="motor_support_profile_length" value="0.485"/>
 
-    <xacro:profile_channel parent="base_link" child="front_bottom_motor_support_profile_channel" profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.205   0.0475  0.00"   rpy="0 0 -1.57"/>
-    <xacro:profile_channel parent="base_link" child="back_bottom_motor_support_profile_channel"  profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.205  -0.0475  0.00"   rpy="0 0 -1.57"/>
-    <xacro:profile_channel parent="base_link" child="left_bottom_motor_support_profile_channel" profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.0475  0.205   0.00"   rpy="0 0 0" />
-    <xacro:profile_channel parent="base_link" child="right_bottom_motor_support_profile_channel"  profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0475 -0.205   0.00"   rpy="0 0 0" />
+        <xacro:profile_channel parent="base_link" child="front_bottom_profile_channel" profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290   0.00  0.00"   rpy="0 0 -1.57" />
+        <xacro:profile_channel parent="base_link" child="back_bottom_profile_channel"  profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290   0.00  0.00"    rpy="0 0 -1.57" />
+        <xacro:profile_channel parent="base_link" child="left_bottom_profile_channel"  profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0     0.290 0.00"  rpy="0 0 0" />
+        <xacro:profile_channel parent="base_link" child="right_bottom_profile_channel" profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0    -0.290 0.00"  rpy="0 0 0" />
 
-    <xacro:profile_channel parent="base_link" child="front_top_profile_channel" profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290   0.00  0.130"   rpy="0 0 -1.57" />
-    <xacro:profile_channel parent="base_link" child="back_top_profile_channel"  profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290   0.00  0.130"    rpy="0 0 -1.57" />
-    <xacro:profile_channel parent="base_link" child="left_top_profile_channel"  profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0     0.290 0.130"  rpy="0 0 0" />
-    <xacro:profile_channel parent="base_link" child="right_top_profile_channel" profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0    -0.290 0.130"  rpy="0 0 0" />
+        <xacro:profile_channel parent="base_link" child="front_bottom_motor_support_profile_channel" profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.205   0.0475  0.00"   rpy="0 0 -1.57"/>
+        <xacro:profile_channel parent="base_link" child="back_bottom_motor_support_profile_channel"  profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.205  -0.0475  0.00"   rpy="0 0 -1.57"/>
+        <xacro:profile_channel parent="base_link" child="left_bottom_motor_support_profile_channel" profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.0475  0.205   0.00"   rpy="0 0 0" />
+        <xacro:profile_channel parent="base_link" child="right_bottom_motor_support_profile_channel"  profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0475 -0.205   0.00"   rpy="0 0 0" />
 
-    <xacro:profile_channel parent="base_link" child="front_top_motor_support_profile_channel"    profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.205   0.0475  0.130"  rpy="0 0 -1.57"/>
-    <xacro:profile_channel parent="base_link" child="back_top_motor_support_profile_channel"     profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.205  -0.0475  0.130"  rpy="0 0 -1.57"/>
-    <xacro:profile_channel parent="base_link" child="left_top_motor_support_profile_channel"     profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.0475  0.205   0.130"  rpy="0 0 0"/>
-    <xacro:profile_channel parent="base_link" child="right_top_motor_support_profile_channel"    profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0475 -0.205   0.130"  rpy="0 0 0"/>
+        <xacro:profile_channel parent="base_link" child="front_top_profile_channel" profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290   0.00  0.130"   rpy="0 0 -1.57" />
+        <xacro:profile_channel parent="base_link" child="back_top_profile_channel"  profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290   0.00  0.130"    rpy="0 0 -1.57" />
+        <xacro:profile_channel parent="base_link" child="left_top_profile_channel"  profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0     0.290 0.130"  rpy="0 0 0" />
+        <xacro:profile_channel parent="base_link" child="right_top_profile_channel" profile_mass="0.28" profile_length="${Chassis_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0    -0.290 0.130"  rpy="0 0 0" />
 
-    <xacro:profile_channel parent="base_link" child="front_left_side_support_profile_channel"   profile_mass="0.045" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290   0.290  0.065" rpy="0 -1.57 0"/>
-    <xacro:profile_channel parent="base_link" child="front_right_side_support_profile_channel"  profile_mass="0.045" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290  -0.290  0.065" rpy="0 -1.57 0"/>
-    <xacro:profile_channel parent="base_link" child="back_left_side_support_profile_channel"    profile_mass="0.045" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290   0.290  0.065"  rpy="0 -1.57 0"/>
-    <xacro:profile_channel parent="base_link" child="back_right_side_support_profile_channel"   profile_mass="0.045" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290  -0.290  0.065"  rpy="0 -1.57 0"/>
+        <xacro:profile_channel parent="base_link" child="front_top_motor_support_profile_channel"    profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.205   0.0475  0.130"  rpy="0 0 -1.57"/>
+        <xacro:profile_channel parent="base_link" child="back_top_motor_support_profile_channel"     profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.205  -0.0475  0.130"  rpy="0 0 -1.57"/>
+        <xacro:profile_channel parent="base_link" child="left_top_motor_support_profile_channel"     profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.0475  0.205   0.130"  rpy="0 0 0"/>
+        <xacro:profile_channel parent="base_link" child="right_top_motor_support_profile_channel"    profile_mass="0.2425" profile_length="${motor_support_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.0475 -0.205   0.130"  rpy="0 0 0"/>
 
-    <!-- Bot Front Marker -->
-    <!-- <xacro:profile_channel parent="base_link" child="Bot_Front_Marker_profile_channel"   profile_mass="0.001" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="0.290  0  0.105"  rpy="0 -1.57 0"/> -->
+        <xacro:profile_channel parent="base_link" child="front_left_side_support_profile_channel"   profile_mass="0.045" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290   0.290  0.065" rpy="0 -1.57 0"/>
+        <xacro:profile_channel parent="base_link" child="front_right_side_support_profile_channel"  profile_mass="0.045" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz=" 0.290  -0.290  0.065" rpy="0 -1.57 0"/>
+        <xacro:profile_channel parent="base_link" child="back_left_side_support_profile_channel"    profile_mass="0.045" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290   0.290  0.065"  rpy="0 -1.57 0"/>
+        <xacro:profile_channel parent="base_link" child="back_right_side_support_profile_channel"   profile_mass="0.045" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="-0.290  -0.290  0.065"  rpy="0 -1.57 0"/>
 
-    <!-- Wheels-->
+        <!-- Bot Front Marker -->
+        <!-- <xacro:profile_channel parent="base_link" child="Bot_Front_Marker_profile_channel"   profile_mass="0.001" profile_length="${Chassis_side_profile_length}" profile_width="${Chassis_profile_size}"  profile_height="${Chassis_profile_size}"  xyz="0.290  0  0.105"  rpy="0 -1.57 0"/> -->
 
-    <xacro:if value="$(arg use_omni_wheel)">
-        <!-- Omni Wheels -->
-        <xacro:include filename="omni_wheel.xacro"/>
-        <xacro:omni_wheel parent="base_link" child="front_left"  xyz=" 0.255   0.205 0.035"  rpy=" 0.0   1.57 0.0 "/>
-        <xacro:omni_wheel parent="base_link" child="back_right"   xyz="-0.255  -0.205 0.035"  rpy=" 0.0  -1.57 0.0"/>
-        <xacro:omni_wheel parent="base_link" child="back_left"   xyz="-0.205  0.255 0.035"   rpy="-1.57  0    0.0"/>
-        <xacro:omni_wheel parent="base_link" child="front_right"  xyz=" 0.205 -0.255 0.035"   rpy=" 1.57  0    0.0"/>
+        <!-- Wheels-->
+
+        <xacro:if value="$(arg use_omni_wheel)">
+            <!-- Omni Wheels -->
+            <xacro:include filename="omni_wheel.xacro"/>
+            <xacro:omni_wheel parent="base_link" child="front_left"  xyz=" 0.255  0.205 0.035" rpy=" 0.0   1.57 0.0 "/>
+            <xacro:omni_wheel parent="base_link" child="back_right"  xyz="-0.255 -0.205 0.035" rpy=" 0.0  -1.57 0.0"/>
+            <xacro:omni_wheel parent="base_link" child="back_left"   xyz="-0.205  0.255 0.035" rpy="-1.57  0    0.0"/>
+            <xacro:omni_wheel parent="base_link" child="front_right" xyz=" 0.205 -0.255 0.035" rpy=" 1.57  0    0.0"/>
+        </xacro:if>
+
+        <xacro:unless value="$(arg use_omni_wheel)">
+            <!--Normal Wheels-->
+            <xacro:include filename="wheel.xacro"/>
+            <xacro:wheel parent="base_link" child="front_left"  xyz=" 0.245  0.205 0.035" rpy=" 0.0   1.57 0.0 "/>
+            <xacro:wheel parent="base_link" child="back_right"  xyz="-0.245 -0.205 0.035" rpy=" 0.0  -1.57 0.0"/>
+            <xacro:wheel parent="base_link" child="back_left"   xyz="-0.205  0.245 0.035" rpy="-1.57  0    0.0"/>
+            <xacro:wheel parent="base_link" child="front_right" xyz=" 0.205 -0.245 0.035" rpy=" 1.57  0    0.0"/>
+        </xacro:unless>
     </xacro:if>
 
-    <xacro:unless value="$(arg use_omni_wheel)">
-        <!--Normal Wheels-->
-        <xacro:include filename="wheel.xacro"/>
-        <xacro:wheel parent="base_link" child="front_left"  xyz=" 0.245   0.205 0.035"  rpy=" 0.0   1.57 0.0 "/>
-        <xacro:wheel parent="base_link" child="back_right"   xyz="-0.245  -0.205 0.035"  rpy=" 0.0  -1.57 0.0"/>
-        <xacro:wheel parent="base_link" child="back_left"   xyz="-0.205  0.245 0.035"   rpy="-1.57  0    0.0"/>
-        <xacro:wheel parent="base_link" child="front_right"  xyz=" 0.205 -0.245 0.035"   rpy=" 1.57  0    0.0"/>
-    </xacro:unless>
+    <!-- Bot ARM -->
 
+    <xacro:if value="$(arg use_eva)">
+
+        <xacro:include filename="leg.xacro"/>
+        <xacro:include filename="body.xacro"/>
+        <xacro:include filename="realsense.xacro"/>
+        <xacro:include filename="arm.xacro"/>
+
+        <xacro:sholder parent="body" child="left"  v_rpy="0.0 0.0 0"    c_xyz="0.0  0.035 0.0" o_xyz="0    0.118 0.457" o_rpy="0.0  0.0  0.0"/>
+        <xacro:sholder parent="body" child="right" v_rpy="0.0 0.0 3.14" c_xyz="0.0 -0.035 0.0" o_xyz="0.0 -0.118 0.457" o_rpy="3.14 3.14 3.14"/>
+    
+        <xacro:upper_biceps side="left"  lower="0"     upper="2.09" o_xyz="0  0.040 0"/>
+        <xacro:upper_biceps side="right" lower="-2.09" upper="0"    o_xyz="0 -0.040 0"/>
+
+        <xacro:lower_biceps side="left"  lower="-1.57" upper="0"/>
+        <xacro:lower_biceps side="right" lower="0"     upper="1.57"/>
+
+        <xacro:elbow side="left"  lower="0" upper="-2.05"/>
+        <xacro:elbow side="right" lower="0" upper="-2.05"/>
+
+        <xacro:wrist side="left"  lower="-1.57" upper="1.57"/>
+        <xacro:wrist side="right" lower="-1.57" upper="1.57"/>
+
+        <xacro:hand side="left"  lower="-1.10" upper="0.6"/>
+        <xacro:hand side="right" lower="-0.6"  upper="1.10"/>
+    </xacro:if>
 
 </robot> 

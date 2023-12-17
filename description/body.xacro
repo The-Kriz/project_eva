@@ -113,7 +113,7 @@
                 </geometry>
         </collision>
 
-        <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
+        <xacro:inertial_cylinder mass="0.02" length="0.1" radius="0.1">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>

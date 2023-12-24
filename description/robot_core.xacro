@@ -96,8 +96,68 @@
         <xacro:wrist side="left"  lower="-1.57" upper="1.57"/>
         <xacro:wrist side="right" lower="-1.57" upper="1.57"/>
 
-        <xacro:hand side="left"  lower="-1.10" upper="0.6"/>
-        <xacro:hand side="right" lower="-0.6"  upper="1.10"/>
-    </xacro:if>
+        <xacro:hand side="left"  lower="-1.10" upper="0.6"  xyz="0.0475 0.012 0.01"/>
+        <xacro:hand side="right" lower="-0.6"  upper="1.10" xyz="0.0475 0.0185 0.01"/>
 
+        <xacro:finger_link side="right" finger="4" link="1" xyz=" 0.008  0.0065 0.003" rpy="3.14 1.57 0" mesh="all_finger_1"/>
+        <xacro:finger_link side="right" finger="3" link="1" xyz=" 0.008  0.0065 0.003" rpy="3.14 1.57 0" mesh="all_finger_1"/>
+        <xacro:finger_link side="right" finger="2" link="1" xyz=" 0.008  0.0065 0.003" rpy="3.14 1.57 0" mesh="all_finger_1"/>
+        <xacro:finger_link side="right" finger="1" link="1" xyz=" 0.008  0.0065 0.003" rpy="3.14 1.57 0" mesh="all_finger_1"/>
+        <xacro:finger_link side="left"  finger="4" link="1" xyz="-0.004 -0.0065 0.003" rpy="0    1.57 0" mesh="all_finger_1"/>
+        <xacro:finger_link side="left"  finger="3" link="1" xyz="-0.004 -0.0065 0.003" rpy="0    1.57 0" mesh="all_finger_1"/>
+        <xacro:finger_link side="left"  finger="2" link="1" xyz="-0.004 -0.0065 0.003" rpy="0    1.57 0" mesh="all_finger_1"/>
+        <xacro:finger_link side="left"  finger="1" link="1" xyz="-0.004 -0.0065 0.003" rpy="0    1.57 0" mesh="all_finger_1"/>
+
+        <xacro:finger_link side="right" finger="4" link="2" xyz=" 0.008  0.006 0.003"  rpy="3.14 1.57 0" mesh="index_finger_2" />
+        <xacro:finger_link side="right" finger="3" link="2" xyz=" 0.008  0.006 0.003"  rpy="3.14 1.57 0" mesh="middle_finger_2"/>
+        <xacro:finger_link side="right" finger="2" link="2" xyz=" 0.008  0.006 0.003"  rpy="3.14 1.57 0" mesh="ring_finger_2"/>
+        <xacro:finger_link side="right" finger="1" link="2" xyz=" 0.008  0.0055 0.003" rpy="3.14 1.57 0" mesh="pinky_finger_2"/>
+        <xacro:finger_link side="left"  finger="4" link="2" xyz="-0.004 -0.006 0.003"  rpy="0    1.57 0" mesh="index_finger_2" />
+        <xacro:finger_link side="left"  finger="3" link="2" xyz="-0.004 -0.006 0.003"  rpy="0    1.57 0" mesh="middle_finger_2" />
+        <xacro:finger_link side="left"  finger="2" link="2" xyz="-0.004 -0.006 0.003"  rpy="0    1.57 0" mesh="ring_finger_2" />
+        <xacro:finger_link side="left"  finger="1" link="2" xyz="-0.004 -0.0055 0.003" rpy="0    1.57 0"  mesh="pinky_finger_2" />
+
+        <xacro:finger_link side="right" finger="4" link="3" xyz=" 0.008  0.0052 0.0035" rpy="3.14 1.57 0" mesh="index_finger_3" />
+        <xacro:finger_link side="right" finger="3" link="3" xyz=" 0.008  0.0052 0.0035" rpy="3.14 1.57 0" mesh="middle_finger_3" />
+        <xacro:finger_link side="right" finger="2" link="3" xyz=" 0.008  0.0052 0.0035" rpy="3.14 1.57 0" mesh="ring_finger_3" />
+        <xacro:finger_link side="right" finger="1" link="3" xyz=" 0.008  0.0052 0.0035" rpy="3.14 1.57 0" mesh="pinky_finger_3" />
+        <xacro:finger_link side="left"  finger="4" link="3" xyz="-0.004 -0.0052 0.0035" rpy="0    1.57 0" mesh="index_finger_3" />
+        <xacro:finger_link side="left"  finger="3" link="3" xyz="-0.004 -0.0052 0.0035" rpy="0    1.57 0" mesh="middle_finger_3" />
+        <xacro:finger_link side="left"  finger="2" link="3" xyz="-0.004 -0.0052 0.0035" rpy="0    1.57 0" mesh="ring_finger_3" />
+        <xacro:finger_link side="left"  finger="1" link="3" xyz="-0.004 -0.0052 0.0035" rpy="0    1.57 0" mesh="pinky_finger_3" />
+
+        <xacro:finger_link side="right" finger="5" link="1" xyz=" 0.023  0.015  0.008" rpy="3.14 1.57 0" mesh="thumb_finger_1" />
+        <xacro:finger_link side="right" finger="5" link="2" xyz="-0.003  0.006 -0.006" rpy="1.57 0    0" mesh="thumb_finger_2" />
+        <xacro:finger_link side="right" finger="5" link="3" xyz="-0.0035 0.006 -0.005" rpy="1.57 0    0" mesh="thumb_finger_3" />
+        <xacro:finger_link side="left"  finger="5" link="1" xyz=" 0.023  0.015  0.008" rpy="3.14 1.57 0" mesh="thumb_finger_1" />
+        <xacro:finger_link side="left"  finger="5" link="2" xyz="-0.003  0.006 -0.006" rpy="1.57 0    0" mesh="thumb_finger_2" />
+        <xacro:finger_link side="left"  finger="5" link="3" xyz="-0.0035 0.006 -0.005" rpy="1.57 0    0" mesh="thumb_finger_3" />
+
+        <xacro:finger_joints_1 name="right_finger_4_link_1"  parent="right_hand" child="right_finger_4_link_1"  xyz="0.02126  0.005 -0.088" lower="0" upper="1.57"/>
+        <xacro:finger_joints name="right_finger_4_link_2"  parent="right_finger_4_link_1" child="right_finger_4_link_2" mimic="right_finger_4_link_1_joint" xyz="0 0 -0.024" lower="0" upper="1.57"/>
+        <xacro:finger_joints name="right_finger_4_link_3"  parent="right_finger_4_link_2" child="right_finger_4_link_3" mimic="right_finger_4_link_1_joint" xyz="0 0 -0.019" lower="0" upper="1.57"/>
+        <xacro:finger_joints_1 name="right_finger_3_link_1"  parent="right_hand" child="right_finger_3_link_1"  xyz="0.00625  0.005  -0.088" lower="0" upper="1.57"/>
+        <xacro:finger_joints name="right_finger_3_link_2"  parent="right_finger_3_link_1" child="right_finger_3_link_2" mimic="right_finger_3_link_1_joint" xyz="0 0 -0.024" lower="0" upper="1.57"/>
+        <xacro:finger_joints name="right_finger_3_link_3"  parent="right_finger_3_link_2" child="right_finger_3_link_3" mimic="right_finger_3_link_1_joint" xyz="0 0 -0.024" lower="0" upper="1.57"/>
+        <xacro:finger_joints_1 name="right_finger_2_link_1"  parent="right_hand" child="right_finger_2_link_1"  xyz="-0.00875 0.005  -0.088" lower="0" upper="1.57"/>
+        <xacro:finger_joints name="right_finger_2_link_2"  parent="right_finger_2_link_1" child="right_finger_2_link_2" mimic="right_finger_2_link_1_joint" xyz="0 0 -0.024" lower="0" upper="1.57"/>
+        <xacro:finger_joints name="right_finger_2_link_3"  parent="right_finger_2_link_2" child="right_finger_2_link_3" mimic="right_finger_2_link_1_joint" xyz="0 0 -0.019" lower="0" upper="1.57"/>
+        <xacro:finger_joints_1 name="right_finger_1_link_1"  parent="right_hand" child="right_finger_1_link_1"  xyz="-0.02575 0.005  -0.088" lower="0" upper="1.57"/>
+        <xacro:finger_joints name="right_finger_1_link_2"  parent="right_finger_1_link_1" child="right_finger_1_link_2" mimic="right_finger_1_link_1_joint" xyz="0 0 -0.024" lower="0" upper="1.57"/>
+        <xacro:finger_joints name="right_finger_1_link_3"  parent="right_finger_1_link_2" child="right_finger_1_link_3" mimic="right_finger_1_link_1_joint" xyz="0 0 -0.016" lower="0" upper="1.57"/>
+
+        <xacro:finger_joints_1 name="left_finger_4_link_1"  parent="left_hand" child="left_finger_4_link_1"  xyz="0.02126  -0.005 -0.088" lower="-1.57" upper="0"/>
+        <xacro:finger_joints name="left_finger_4_link_2"  parent="left_finger_4_link_1" child="left_finger_4_link_2" mimic="left_finger_4_link_1_joint" xyz="0 0 -0.024 " lower="-1.57" upper="0"/>
+        <xacro:finger_joints name="left_finger_4_link_3"  parent="left_finger_4_link_2" child="left_finger_4_link_3" mimic="left_finger_4_link_1_joint" xyz="0 0 -0.019" lower="-1.57" upper="0"/>
+        <xacro:finger_joints_1 name="left_finger_3_link_1"  parent="left_hand" child="left_finger_3_link_1"  xyz="0.00625  -0.005  -0.088" lower="-1.57" upper="0"/>
+        <xacro:finger_joints name="left_finger_3_link_2"  parent="left_finger_3_link_1" child="left_finger_3_link_2" mimic="left_finger_3_link_1_joint" xyz="0 0 -0.024" lower="-1.57" upper="0"/>
+        <xacro:finger_joints name="left_finger_3_link_3"  parent="left_finger_3_link_2" child="left_finger_3_link_3" mimic="left_finger_3_link_1_joint" xyz="0 0 -0.024" lower="-1.57" upper="0"/>
+        <xacro:finger_joints_1 name="left_finger_2_link_1"  parent="left_hand" child="left_finger_2_link_1"  xyz="-0.00875 -0.005  -0.088" lower="-1.57" upper="0"/>
+        <xacro:finger_joints name="left_finger_2_link_2"  parent="left_finger_2_link_1" child="left_finger_2_link_2" mimic="left_finger_2_link_1_joint" xyz="0 0 -0.024" lower="-1.57" upper="0"/>
+        <xacro:finger_joints name="left_finger_2_link_3"  parent="left_finger_2_link_2" child="left_finger_2_link_3" mimic="left_finger_2_link_1_joint" xyz="0 0 -0.019" lower="-1.57" upper="0"/>
+        <xacro:finger_joints_1 name="left_finger_1_link_1"  parent="left_hand" child="left_finger_1_link_1"  xyz="-0.02575 -0.005  -0.088" lower="-1.57" upper="0"/>
+        <xacro:finger_joints name="left_finger_1_link_2"  parent="left_finger_1_link_1" child="left_finger_1_link_2" mimic="left_finger_1_link_1_joint" xyz="0 0 -0.024" lower="-1.57" upper="0"/>
+        <xacro:finger_joints name="left_finger_1_link_3"  parent="left_finger_1_link_2" child="left_finger_1_link_3" mimic="left_finger_1_link_1_joint" xyz="0 0 -0.016" lower="-1.57" upper="0"/>
+
+    </xacro:if>
 </robot> 

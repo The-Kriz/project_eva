@@ -170,12 +170,12 @@
         </joint>
     </xacro:macro>
 
-    <xacro:macro name="hand" params="side lower upper">
+    <xacro:macro name="hand" params="side lower upper xyz">
         <link name="${side}_hand">
             <visual>
-                <origin xyz="0.0 0.0 0.0" rpy="0 0 1.57"/>
+                <origin xyz="${xyz}" rpy="1.57 3.14 0"/> 
                 <geometry>
-                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/hand.STL"/>
+                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/Hand/${side}_palm.STL" scale="0.001 0.001 0.001"/>
                 </geometry>
                 <material name="skin">
                     <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>
@@ -203,5 +203,95 @@
             <child link="${side}_hand" />
         </joint>
     </xacro:macro>
-    
+
+<!--/////////////////////////////////////////// FINGERS  /////////////////////////////////////////////////////////////////-->
+
+    <xacro:macro name="finger_joints" params="name parent child mimic xyz lower upper">
+         <joint name="${name}_joint" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="0.1" lower="${lower}" upper="${upper}" velocity="0.2"/>
+            <origin xyz="${xyz}" rpy="0 0 0" />
+            <parent link="${parent}" />
+            <child link="${child}" />
+            <mimic joint="${mimic}" multiplier="1"/>
+        </joint>       
+    </xacro:macro>
+ 
+     <xacro:macro name="finger_joints_1" params="name parent child xyz lower upper">
+         <joint name="${name}_joint" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="0.1" lower="${lower}" upper="${upper}" velocity="0.2"/>
+            <origin xyz="${xyz}" rpy="0 0 0" />
+            <parent link="${parent}" />
+            <child link="${child}" />
+        </joint>       
+    </xacro:macro>
+
+    <xacro:macro name="finger_link" params="side finger link xyz rpy mesh">
+        <link name="${side}_finger_${finger}_link_${link}">
+            <visual>
+                <origin xyz="${xyz}" rpy="${rpy}"/>
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/Hand/${mesh}.STL" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="skin">
+                    <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>
+                </material>
+            </visual>
+        </link>
+    </xacro:macro>
+
+
+    <joint name="right_finger_5_joint_1" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit effort="0.1"  lower="0" upper="1.57" velocity="0.2"/>
+        <origin xyz="0.044 0.0095 -0.02" rpy="0 0 0" />
+        <parent link="right_hand"/>
+        <child link="right_finger_5_link_1" />
+    </joint>
+
+    <joint name="right_finger_5_joint_2" type="revolute">
+        <axis xyz="0 1 0"/>
+        <limit effort="0.1"  lower="0" upper="1.22" velocity="0.2"/>
+        <origin xyz="0.02 0.0005 -0.0175" rpy="0 0 0" />
+        <parent link="right_finger_5_link_1" />
+        <child link="right_finger_5_link_2" />
+    </joint>
+
+    <joint name="right_finger_5_joint_3" type="revolute">
+        <axis xyz="0 1 0"/>
+        <limit effort="0.1"  lower="0" upper="1.22" velocity="0.2"/>
+        <origin xyz="0.019 0 0" rpy="0 0 0" />
+        <parent link="right_finger_5_link_2" />
+        <child link="right_finger_5_link_3" />
+        <mimic joint="right_finger_5_joint_2" multiplier="1"/>
+    </joint>
+
+    <joint name="left_finger_5_joint_1" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit effort="0.1"  lower="-1.57" upper="0" velocity="0.2"/>
+        <origin xyz="0.044 -0.0095 -0.02" rpy="0 0 0" />
+        <parent link="left_hand"/>
+        <child link="left_finger_5_link_1" />
+    </joint>
+
+    <joint name="left_finger_5_joint_2" type="revolute">
+        <axis xyz="0 1 0"/>
+        <limit effort="0.1"  lower="0" upper="1.22" velocity="0.2"/>
+        <origin xyz="0.02 0.0005 -0.0175" rpy="0 0 0" />
+        <parent link="left_finger_5_link_1" />
+        <child link="left_finger_5_link_2" />
+    </joint>
+
+    <joint name="left_finger_5_joint_3" type="revolute">
+        <axis xyz="0 1 0"/>
+        <limit effort="0.1"  lower="0" upper="1.22" velocity="0.2"/>
+        <origin xyz="0.019 0 0" rpy="0 0 0" />
+        <parent link="left_finger_5_link_2" />
+        <child link="left_finger_5_link_3" />
+        <mimic joint="left_finger_5_joint_2" multiplier="1"/>
+    </joint>
+
 </robot>
+
+

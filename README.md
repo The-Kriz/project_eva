@@ -33,6 +33,10 @@ experiences through a combination of advanced AI technology and automated contro
 ### 2.2 Arm
 ![Arm](https://github.com/The-Kriz/project_eva/assets/90817926/d6fc030a-5922-4023-88fe-fe54f42359e4)
 
-### 2.3 EVA
-![Screenshot from 2023-12-17 13-25-06](https://github.com/The-Kriz/project_eva/assets/90817926/17624510-85cd-474a-9a9d-8b34483601e0)
+### 2.3 Fingers
+![Screenshot from 2023-12-24 17-36-03](https://github.com/The-Kriz/project_eva/assets/90817926/1fa3b454-476e-470e-9692-c7e8a863c41d)
+
+### 2.4 EVA
+![Screenshot from 2023-12-24 19-12-04](https://github.com/The-Kriz/project_eva/assets/90817926/73d8d449-0a14-4c71-b97e-e2c0f381ddf0)
+
 

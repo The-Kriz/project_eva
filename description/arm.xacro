@@ -175,7 +175,7 @@
             <visual>
                 <origin xyz="${xyz}" rpy="1.57 3.14 0"/> 
                 <geometry>
-                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/hand/${side}_palm.STL" scale="0.001 0.001 0.001"/>
+                    <mesh filename="file://$(find project_eva)/meshes/EVA/Arm/Hand/${side}_palm.STL" scale="0.001 0.001 0.001"/>
                 </geometry>
                 <material name="skin">
                     <color rgba="${255/255} ${219/255} ${184/255} 1.0"/>

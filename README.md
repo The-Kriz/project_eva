@@ -29,6 +29,7 @@ experiences through a combination of advanced AI technology and automated contro
 
 ### 2.1 Drive
 ![rviz](https://github.com/The-Kriz/project_eva/assets/90817926/217f6b19-c6b4-49b9-a392-6fd262fec37f)
+![default_gzclient_camera(1)-2024-01-07T20_00_17 403803](https://github.com/The-Kriz/project_eva/assets/90817926/77d0dbb7-fc24-44be-a96e-c7d7c1400215)
 
 ### 2.2 Arm
 ![Arm](https://github.com/The-Kriz/project_eva/assets/90817926/d6fc030a-5922-4023-88fe-fe54f42359e4)

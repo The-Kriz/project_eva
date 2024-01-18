@@ -25,7 +25,7 @@ experiences through a combination of advanced AI technology and automated contro
 #### 1.2.2 Run Robot Simulation
     ros2 launch project_eva launch_sim.launch.py use_sim_time:=true use_omni_wheel:=true use_drive:=true use_eva:=true
 
-## 2 Rviz
+## 2 URDF
 
 ### 2.1 Drive
 ![rviz](https://github.com/The-Kriz/project_eva/assets/90817926/217f6b19-c6b4-49b9-a392-6fd262fec37f)

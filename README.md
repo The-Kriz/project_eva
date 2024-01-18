@@ -41,3 +41,11 @@ experiences through a combination of advanced AI technology and automated contro
 ![Screenshot from 2023-12-24 19-12-04](https://github.com/The-Kriz/project_eva/assets/90817926/73d8d449-0a14-4c71-b97e-e2c0f381ddf0)
 
 
+## 3 POSE
+![Namaste2](https://github.com/The-Kriz/project_eva/assets/90817926/a8ccb727-971d-4e16-8bf1-e1d1d1865f27)
+
+![Namaste3](https://github.com/The-Kriz/project_eva/assets/90817926/49b6eb77-ddec-40f3-b5f3-dc92ccfeb3f8)
+
+
+
+

@@ -1,0 +1,140 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    drive_controller:
+      # type: velocity_controllers/JointVelocityController
+      type: velocity_controllers/JointGroupVelocityController
+
+    left_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    right_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    left_finger_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    right_finger_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+      
+    head_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+
+drive_controller:
+  ros__parameters:
+    joints:
+      - front_right_wheel_joint
+      - front_left_wheel_joint
+      - back_left_wheel_joint
+      - back_right_wheel_joint
+      
+    # interface_name: velocity
+    command_interfaces:
+      - velocity
+
+    state_interfaces:
+      - velocity
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+
+left_arm_controller:
+  ros__parameters:
+    joints:   
+      - left_arm_joint
+      - left_sholder_joint
+      - left_biceps_joint
+      - left_elbow_joint
+      - left_wrist_joint
+      - left_hand_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+
+right_arm_controller:
+  ros__parameters:
+    joints:   
+      - right_arm_joint
+      - right_sholder_joint
+      - right_biceps_joint
+      - right_elbow_joint
+      - right_wrist_joint
+      - right_hand_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+
+left_finger_controller:
+  ros__parameters:
+    joints:   
+      - left_finger_4_link_1_joint
+      - left_finger_3_link_1_joint
+      - left_finger_2_link_1_joint
+      - left_finger_1_link_1_joint
+      - left_finger_5_link_1_joint
+      - left_finger_5_link_2_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+right_finger_controller:
+  ros__parameters:
+    joints:   
+      - right_finger_4_link_1_joint
+      - right_finger_3_link_1_joint
+      - right_finger_2_link_1_joint
+      - right_finger_1_link_1_joint
+      - right_finger_5_link_1_joint
+      - right_finger_5_link_2_joint
+
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+head_controller:
+  ros__parameters:
+    joints:   
+      - neck_joint
+      - head_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true

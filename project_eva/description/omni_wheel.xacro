@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Rubber Rollers of Omni Wheels -->
+
+    <xacro:macro name="omni_wheel_roller" params="parent child xyz rpy ">
+        <link name="${parent}_${child}_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="1.57 0 0" />
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/Drive/wheel_roller.STL"/>
+                </geometry>
+                <material name="wheel_rubber">
+                    <color rgba="0 0 0 1" />
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="1.57 0 0" />
+                <geometry>
+                    <sphere radius="0.0095"/>
+                </geometry>
+            </collision>
+
+            <xacro:inertial_cylinder mass="0.005" length="0.018" radius="0.0095" xyz="0 0 0" rpy="0 0 0">
+            </xacro:inertial_cylinder>
+        </link>
+
+        <joint name="${parent}_${child}_joint" type="continuous">
+            <parent link="${parent}" />
+            <child link="${parent}_${child}_link" />
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <axis xyz="0.0 0.0 1.0" />
+        </joint>
+
+        <gazebo reference = "${parent}_${child}_link">
+            <material>Gazebo/Black</material> 
+        </gazebo>
+    </xacro:macro>
+
+    <!-- Omni Wheel Plate -->
+
+    <xacro:macro name="omni_wheel_plate" params="child xyz rpy ">
+
+        <link name="${child}">
+            <visual>
+                <origin xyz="${xyz}" rpy="${rpy}"/>
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/Drive/wheel_link.STL"/>
+                </geometry>
+                <material name="">
+                    <color rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="${xyz}" rpy="${rpy}"/>
+                <geometry>
+                    <mesh filename="file://$(find project_eva)/meshes/Drive/wheel_link.STL"/>
+                </geometry>
+            </collision>
+
+            <inertial>
+                <origin xyz="0 0 -0.0045" rpy="${rpy}" />
+                <mass value="0.1625" />
+                <inertia ixx="0.000781592793267822" ixy="7.25426890587709E-19" ixz="-6.09681598211934E-19"
+                        iyy="0.000781592793267821" iyz="-1.67393264409733E-19"
+                        izz="0.0014442649663699" />
+            </inertial>
+        </link>
+
+        <gazebo reference = "${child}">
+            <material>Gazebo/DarkGrey</material> 
+        </gazebo>
+    </xacro:macro>
+
+    <!-- Complete Omni Wheel -->
+
+    <xacro:macro name="omni_wheel" params="parent child xyz rpy ">
+
+        <xacro:omni_wheel_plate child="${child}_wheel_link" xyz="0 0 0" rpy="1.57 0 0.875" />
+        <joint name="${child}_wheel_joint" type="continuous">
+            <parent link="${parent}" />
+            <child link="${child}_wheel_link" />
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <axis xyz="0.0 0.0 1.0" />
+        </joint>
+
+        <xacro:omni_wheel_plate child="${child}_wheel_plate1_link"  xyz=" 0 0  0.009"  rpy="1.57 0 0.875" />
+        <joint name="${child}_wheel_plate1_joint" type="fixed">
+            <parent link="${child}_wheel_link" />
+            <child link="${child}_wheel_plate1_link" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <axis xyz="0 0 0" />
+        </joint>
+
+        <xacro:omni_wheel_plate child="${child}_wheel_plate2_link"  xyz=" 0 0 -0.016"  rpy="1.57 0 0"  />
+        <joint name="${child}_wheel_plate2_joint" type="fixed">
+            <parent link="${child}_wheel_link" />
+            <child link="${child}_wheel_plate2_link" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <axis xyz="0 0 0" />
+        </joint>
+
+        <xacro:omni_wheel_plate child="${child}_wheel_plate3_link"  xyz=" 0 0 -0.009"  rpy="1.57 0 0"  />
+        <joint name="${child}_wheel_plate3_joint" type="fixed">
+            <parent link="${child}_wheel_link" />
+            <child link="${child}_wheel_plate3_link" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <axis xyz="0 0 0" />
+        </joint>
+
+        <!-- 22 Rubber Rollers of Omni Wheels -->
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller1"  xyz="0          0.0535    0.004" rpy=" 0 1.6573  0" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller2"  xyz="0.028778   0.045101  0.004" rpy=" 0 1.6573 -0.5712" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller3"  xyz="0.048593   0.022382  0.004" rpy=" 0 1.6573 -1.1424" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller4"  xyz="0.05298   -0.007442  0.004" rpy=" 0 1.6573 -1.7136" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller5"  xyz="0.040546  -0.034904  0.004" rpy=" 0 1.6573 -2.2848" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller6"  xyz="0.015239  -0.051284  0.004" rpy=" 0 1.6573 -2.856" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller7"  xyz="-0.014906 -0.051382  0.004" rpy=" 0 1.6573  2.856" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller8"  xyz="-0.040319 -0.035166  0.004" rpy=" 0 1.6573  2.2848" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller9"  xyz="-0.052931 -0.007785  0.004" rpy=" 0 1.6573  1.7136" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller10" xyz="-0.048737  0.022067  0.004" rpy=" 0 1.6573  1.1424" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller11" xyz="-0.02907   0.044913  0.004" rpy=" 0 1.6573  0.5712" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller12" xyz="-0.040433  0.035035 -0.016" rpy="0  1.6573   0.8568" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller13" xyz="-0.015239  0.051284 -0.016" rpy="0  1.6573   0.2856" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller14" xyz=" 0.040319  0.035166 -0.016" rpy="0  1.6573  -0.8568" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller15" xyz=" 0.014906  0.051382 -0.016" rpy="0  1.6573  -0.2856" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller16" xyz=" 0.052931  0.007785 -0.016" rpy="0  1.6573  -1.428" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller17" xyz=" 0.048737 -0.022067 -0.016" rpy="0  1.6573  -1.9992" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller18" xyz=" 0.02907  -0.044913 -0.016" rpy="0  1.6573  -2.5704" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller19" xyz=" 0.000173 -0.0535   -0.016" rpy="0  1.6573   3.1416" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller20" xyz="-0.028778 -0.045101 -0.016" rpy="0  1.6573   2.5704" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller21" xyz="-0.048593 -0.022382 -0.016" rpy="0  1.6573   1.9992" />
+        <xacro:omni_wheel_roller parent="${child}_wheel_plate1_link" child="roller22" xyz="-0.05298   0.007442 -0.016" rpy="0  1.6573   1.428" />
+
+    </xacro:macro>
+
+    <xacro:macro name="default_wheel_transmission" params="name">
+        <transmission name="${name}_transmission">
+            <plugin>transmission_interface/SimpleTransmission</plugin>
+            <actuator name="${name}_motor" role="actuator1"/>
+            <joint name="${name}_wheel_joint"  role="joint1">
+                <mechanical_reduction>1.0</mechanical_reduction>
+            </joint>
+        </transmission>
+    </xacro:macro>
+
+</robot>

@@ -1,0 +1,54 @@
+ros2 run project_eva_controller tf_publisher 
+ros2 launch project_eva rsp.launch.py
+ros2 launch teleop_twist_joy teleop-launch.py joy_config:='xbox'
+rviz2
+ros2 run joint_state_publisher joint_state_publisher
+ros2 run joint_state_publisher_gui joint_state_publisher_gui
+
+
+sudo apt-get install ros-$ROS_DISTRO-realsense2-camera ros-$ROS_DISTRO-realsense2-description ros-$ROS_DISTRO-gazebo-plugins
+
+cd Robocon_project/
+colcon build --symlink-install
+source install/setup.bash
+ros2 launch project_eva rsp.launch.py use_sim_time:=true use_omni_wheel:=false use_drive:=true use_eva:=true
+
+rviz2
+ros2 run joint_state_publisher_gui joint_state_publisher_gui
+
+
+
+ros2 launch moveit_setup_assistant setup_assistant.launch.py 
+
+ros2 launch project_eva_moveit moveit.launch.py 
+
+
+ros2 launch  project_eva_controller controller.launch.py 
+
+
+ros2 launch project_eva gazebo.launch.py 
+
+
+ros2 topic pub /drive_controller/commands std_msgs/msg/Float64MultiArray "layout:
+  dim:
+  - label: ''
+    size: 4  # Number of joints
+    stride: 4
+  data_offset: 0
+data: [0.0, 0.0, 0.0, 10.0]"
+
+cd Robocon_project/
+colcon build --symlink-install
+source install/setup.bash
+ros2 launch project_eva gazebo.launch.py 
+
+source install/setup.bash
+ros2 run project_eva_drive project_eva_drive_node 
+
+source install/setup.bash
+ros2 launch teleop_twist_joy teleop-launch.py joy_config:='xbox'
+
+ros2 launch project_eva gazebo.launch.py world:=./src/project_eva/worlds/small_house.world
+
+source install/setup.bash
+ros2 launch project_eva_moveit moveit.launch.py 

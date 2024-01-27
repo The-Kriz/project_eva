@@ -1,0 +1,36 @@
+initial_positions:
+  left_arm_joint:     0.0
+  left_sholder_joint: 0.08
+  left_biceps_joint:  0.0
+  left_elbow_joint:   0.0
+  left_wrist_joint:   0.0
+  left_hand_joint:    0.0
+
+  right_arm_joint:      0.0
+  right_sholder_joint: -0.08
+  right_biceps_joint:   0.0
+  right_elbow_joint:    0.0
+  right_wrist_joint:    0.0
+  right_hand_joint:     0.0
+
+  front_left_wheel_joint:  0.0
+  back_right_wheel_joint:  0.0
+  back_left_wheel_joint:   0.0
+  front_right_wheel_joint: 0.0
+
+  neck_joint: 0.0
+  head_joint: 0.0
+
+  right_finger_4_link_1_joint: 0.0
+  right_finger_3_link_1_joint: 0.0
+  right_finger_2_link_1_joint: 0.0
+  right_finger_1_link_1_joint: 0.0
+  right_finger_5_link_1_joint: 0.0
+  right_finger_5_link_2_joint: 1.2
+
+  left_finger_4_link_1_joint: 0.0
+  left_finger_3_link_1_joint: 0.0
+  left_finger_2_link_1_joint: 0.0
+  left_finger_1_link_1_joint: 0.0
+  left_finger_5_link_1_joint: 0.0
+  left_finger_5_link_2_joint: 1.2

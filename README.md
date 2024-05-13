@@ -47,5 +47,10 @@ experiences through a combination of advanced AI technology and automated contro
 ![Namaste_Gazebo](https://github.com/The-Kriz/project_eva/assets/90817926/49b6eb77-ddec-40f3-b5f3-dc92ccfeb3f8)
 
 
-
+![a](https://github.com/The-Kriz/project_eva/blob/main/Images/IMG_8634.JPG)
+![b](https://github.com/The-Kriz/project_eva/blob/main/Images/IMG_8635.JPG)
+![c](https://github.com/The-Kriz/project_eva/blob/main/Images/IMG_8677.JPG)
+![d](https://github.com/The-Kriz/project_eva/blob/main/Images/IMG_8678.JPG)
+![e](https://github.com/The-Kriz/project_eva/blob/main/Images/IMG_8720.JPG)
+![f](https://github.com/The-Kriz/project_eva/blob/main/Images/IMG_8715.JPG)
 

@@ -2,6 +2,8 @@
 
 <robot name="robot">
 
+    <virtual_joint name="planar_joint" type="fixed" parent_frame="world" child_link="base_footprint" />
+    
     <group name="left_arm">
         <joint name="body_joint"/>
         <joint name="left_arm_joint"/>
@@ -10,6 +12,24 @@
         <joint name="left_elbow_joint"/>
         <joint name="left_wrist_joint"/>
         <joint name="left_hand_joint"/>
+    </group>
+
+    <group name="left_fingers">
+        <link name="left_finger_5_link_1"/>
+        <link name="left_finger_5_link_2"/>
+        <link name="left_finger_5_link_3"/>
+        <link name="left_finger_4_link_1"/>
+        <link name="left_finger_4_link_2"/>
+        <link name="left_finger_4_link_3"/>
+        <link name="left_finger_3_link_1"/>
+        <link name="left_finger_3_link_2"/>
+        <link name="left_finger_3_link_3"/>
+        <link name="left_finger_2_link_1"/>
+        <link name="left_finger_2_link_2"/>
+        <link name="left_finger_2_link_3"/>
+        <link name="left_finger_1_link_1"/>
+        <link name="left_finger_1_link_2"/>
+        <link name="left_finger_1_link_3"/>
     </group>
 
     <group name="right_arm">
@@ -22,11 +42,48 @@
         <joint name="right_hand_joint"/>
     </group>
 
+    <group name="right_fingers">
+        <link name="right_finger_5_link_1"/>
+        <link name="right_finger_5_link_2"/>
+        <link name="right_finger_5_link_3"/>
+        <link name="right_finger_4_link_1"/>
+        <link name="right_finger_4_link_2"/>
+        <link name="right_finger_4_link_3"/>
+        <link name="right_finger_3_link_1"/>
+        <link name="right_finger_3_link_2"/>
+        <link name="right_finger_3_link_3"/>
+        <link name="right_finger_2_link_1"/>
+        <link name="right_finger_2_link_2"/>
+        <link name="right_finger_2_link_3"/>
+        <link name="right_finger_1_link_1"/>
+        <link name="right_finger_1_link_2"/>
+        <link name="right_finger_1_link_3"/>
+    </group>
+
+    <group name="both_arms">
+        <group name="left_arm"/>
+        <group name="right_arm"/>
+    </group>
+
     <group name="head">
         <joint name="body_joint"/>
         <joint name="neck_joint"/>
         <joint name="head_joint"/>
     </group>
+
+    <group name="all">
+        <group name="head">
+        <group name="left_arm"/>
+        <group name="right_arm"/>
+        <group name="left_fingers">
+        <group name="right_fingers">
+    </group>
+
+    <!-- <end_effector name="left_gripper"  group="left_fingers"  parent_link="left_hand_joint"  parent_group="left_arm"/>
+    <end_effector name="right_gripper" group="right_fingers" parent_link="right_hand_joint" parent_group="right_arm"/>
+    <virtual_joint name="virtual_joint">
+        <joint name="virtual_joint"/>
+    <virtual_joint/> -->
 
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -40,7 +97,59 @@
         <joint name="left_hand_joint"    value="0.0"/>
     </group_state>
 
+    <group_state name="open" group="left_fingers">
+        <joint name="left_finger_5_link_1_joint" value="0.0"/>
+        <joint name="left_finger_5_link_2_joint" value="0.0"/>
+        <joint name="left_finger_4_link_1_joint" value="0.0"/>
+        <joint name="left_finger_3_link_1_joint" value="0.0"/>
+        <joint name="left_finger_2_link_1_joint" value="0.0"/>
+        <joint name="left_finger_1_link_1_joint" value="0.0"/>
+        
+    </group_state>
+
+    <group_state name="closed" group="left_fingers">
+        <joint name="left_finger_5_link_1_joint" value="-1.55"/>
+        <joint name="left_finger_5_link_2_joint" value="1.55"/>
+        <joint name="left_finger_4_link_1_joint" value="-1.55"/>
+        <joint name="left_finger_3_link_1_joint" value="-1.55"/>
+        <joint name="left_finger_2_link_1_joint" value="-1.55"/>
+        <joint name="left_finger_1_link_1_joint" value="-1.55"/>
+    </group_state>
+
     <group_state name="home" group="right_arm">
+        <joint name="right_arm_joint"     value="0.0"/>
+        <joint name="right_sholder_joint" value="-0.08"/>
+        <joint name="right_biceps_joint"  value="0.0"/>
+        <joint name="right_elbow_joint"   value="0.0"/>
+        <joint name="right_wrist_joint"   value="0.0"/>
+        <joint name="right_hand_joint"    value="0.0"/>
+    </group_state>
+
+    <group_state name="open" group="right_fingers">
+        <joint name="right_finger_5_link_1_joint" value="0.0"/>
+        <joint name="right_finger_5_link_2_joint" value="0.0"/>
+        <joint name="right_finger_4_link_1_joint" value="0.0"/>
+        <joint name="right_finger_3_link_1_joint" value="0.0"/>
+        <joint name="right_finger_2_link_1_joint" value="0.0"/>
+        <joint name="right_finger_1_link_1_joint" value="0.0"/>    
+    </group_state>
+
+    <group_state name="closed" group="right_fingers">
+        <joint name="right_finger_5_link_1_joint" value="1.55"/>
+        <joint name="right_finger_5_link_2_joint" value="1.55"/>
+        <joint name="right_finger_4_link_1_joint" value="1.55"/>
+        <joint name="right_finger_3_link_1_joint" value="1.55"/>
+        <joint name="right_finger_2_link_1_joint" value="1.55"/>
+        <joint name="right_finger_1_link_1_joint" value="1.55"/>    
+    </group_state>
+
+    <group_state name="home" group="both_arms">
+        <joint name="left_arm_joint"     value="0.0"/>
+        <joint name="left_sholder_joint" value="0.08"/>
+        <joint name="left_biceps_joint"  value="0.0"/>
+        <joint name="left_elbow_joint"   value="0.0"/>
+        <joint name="left_wrist_joint"   value="0.0"/>
+        <joint name="left_hand_joint"    value="0.0"/>
         <joint name="right_arm_joint"     value="0.0"/>
         <joint name="right_sholder_joint" value="-0.08"/>
         <joint name="right_biceps_joint"  value="0.0"/>
@@ -133,6 +242,7 @@
     <disable_collisions link1="right_finger_5_link_2" link2="right_finger_5_link_3" reason="Adjacent"/>
 
 <!-- extra bull shits -->
+
     <disable_collisions link1="right_finger_5_link_1" link2="left_finger_5_link_1" reason="Adjacent"/>
     <disable_collisions link1="right_finger_5_link_2" link2="left_finger_5_link_2" reason="Adjacent"/>
     <disable_collisions link1="right_finger_5_link_3" link2="left_finger_5_link_3" reason="Adjacent"/>

@@ -26,6 +26,7 @@ def generate_launch_description():
         )
         .robot_description_semantic(file_path="config/project_eva.srdf")
         .trajectory_execution(file_path="config/moveit_controllers.yaml")
+        .robot_description_kinematics(file_path="config/kinematics.yaml")
         .to_moveit_configs()
     )
 

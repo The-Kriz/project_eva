@@ -34,7 +34,7 @@ def generate_launch_description():
         parameters=[params]
     )
 
-    # Create a robot_state_publisher node
+    # Create a joint_state_publisher node
     params = {'robot_description': robot_description_config, ' use_sim_time': use_sim_time}
     node_joint_state_publisher = Node(
         package='joint_state_publisher',

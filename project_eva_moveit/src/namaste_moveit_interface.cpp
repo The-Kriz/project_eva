@@ -34,8 +34,6 @@ void move_robot(const std::shared_ptr<rclcpp::Node> node)
         return;
     }
 
-
-
     moveit::planning_interface::MoveGroupInterface::Plan left_arm_plan;
     moveit::planning_interface::MoveGroupInterface::Plan right_arm_plan;
     bool left_arm_plan_success = (move_left_arm_group.plan(left_arm_plan) == moveit::core::MoveItErrorCode::SUCCESS);
@@ -44,7 +42,7 @@ void move_robot(const std::shared_ptr<rclcpp::Node> node)
     if(left_arm_plan_success && right_arm_plan_success)
     {
         RCLCPP_INFO(rclcpp::get_logger("rclcpp"),
-                    "Planner SUCCEED, moving the arme and the gripper");
+                    "Planner SUCCEED, moving the left and right arm");
         move_left_arm_group.move();
         move_right_arm_group.move();
     }

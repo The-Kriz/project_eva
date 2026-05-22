@@ -4,8 +4,14 @@
     <xacro:include filename="inertial_macros.xacro"/>
 
     <!-- Base Link -->
-
+    
+    <link name="base_footprint"/>
     <link name="base_link"></link>
+    <joint name="base_footprint_joint" type="fixed">
+        <child link="base_link"/>
+        <parent link="base_footprint"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
 
     <!-- USE DRIVE -->
 
@@ -13,7 +19,7 @@
 
         <link name="drive_base_link">
             <visual>
-                <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0  1.57"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <geometry> 
                     <mesh filename="file://$(find project_eva)/meshes/Drive/Base_Chassis.STL"/>
                 </geometry>
@@ -23,8 +29,8 @@
             </visual>
 
             <collision>
-                <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0  1.57"/>
-                <geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry> 
                     <mesh filename="file://$(find project_eva)/meshes/Drive/Base_Chassis.STL"/>
                 </geometry>
             </collision>
@@ -59,10 +65,10 @@
         <xacro:unless value="$(arg use_omni_wheel)">
             <!--Normal Wheels-->
             <xacro:include filename="wheel.xacro"/>
-            <xacro:wheel parent="drive_base_link" child="front_left"  xyz=" 0.25  0.195 0.045" rpy=" 0.0   1.57 0.0 "/>
-            <xacro:wheel parent="drive_base_link" child="back_right"  xyz="-0.25 -0.195 0.045" rpy=" 0.0  -1.57 0.0"/>
-            <xacro:wheel parent="drive_base_link" child="back_left"   xyz="-0.195  0.25 0.045" rpy="-1.57  0    0.0"/>
-            <xacro:wheel parent="drive_base_link" child="front_right" xyz=" 0.195 -0.25 0.045" rpy=" 1.57  0    0.0"/>
+            <xacro:wheel parent="drive_base_link" child="front_left"  xyz=" 0.168  0.218   0.045" rpy=" 1.57  0.0  0.0 "/>
+            <xacro:wheel parent="drive_base_link" child="back_right"  xyz="-0.168 -0.218   0.045" rpy="-1.57  0.0  0.0"/>
+            <xacro:wheel parent="drive_base_link" child="back_left"   xyz=" 0.218  -0.168 0.045" rpy=" 0.0  -1.57 0.0"/>
+            <xacro:wheel parent="drive_base_link" child="front_right" xyz="-0.218   0.168 0.045" rpy=" 0.0   1.57 0.0"/>
         </xacro:unless>
 
         <xacro:default_wheel_transmission name="front_left"/>
@@ -87,6 +93,7 @@
             <child link="EVA_base_link"/>
             <origin xyz="0 0 0.175" rpy="0 0 0" />
         </joint>
+
 
         <xacro:sholder parent="body" side="left"  v_rpy="0.0 0.0 0"    c_xyz="0.0  0.035 0.0" o_xyz="0    0.118 0.457" o_rpy="0.0  0.0  0.0"/>
         <xacro:sholder parent="body" side="right" v_rpy="0.0 0.0 3.14" c_xyz="0.0 -0.035 0.0" o_xyz="0.0 -0.118 0.457" o_rpy="3.14 3.14 3.14"/>

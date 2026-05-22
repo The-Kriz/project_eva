@@ -39,10 +39,16 @@ def generate_launch_description():
                         output='screen')
 
 
+    controller = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory('project_eva_controller'),'launch','controller.launch.py'
+                )])
+    )
 
     # Launch them all!
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
+        controller,
     ])

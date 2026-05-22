@@ -41,22 +41,30 @@ void move_robot(const std::shared_ptr<rclcpp::Node> node)
     bool left_arm_plan_success = (move_left_arm_group.plan(left_arm_plan) == moveit::core::MoveItErrorCode::SUCCESS);
     bool right_arm_plan_success = (move_right_arm_group.plan(right_arm_plan) == moveit::core::MoveItErrorCode::SUCCESS);
 
-    if (!left_arm_within_bounds | !right_arm_within_bounds)
+    if (!left_arm_plan_success | !right_arm_plan_success)
     {
         RCLCPP_WARN(rclcpp::get_logger("rclcpp"),
                     "Target joint position(s) were outside of limits, but we will plan and clamp to the limits ");
-        if (!left_arm_within_bounds)
+        if (!left_arm_plan_success)
         {
             RCLCPP_WARN(rclcpp::get_logger("rclcpp"),
             "Left Arm Target joint position(s) were outside of limits");
         }
-        if (!right_arm_within_bounds)
+        if (!right_arm_plan_success)
         {
             RCLCPP_WARN(rclcpp::get_logger("rclcpp"),
             "Right Arm Target joint position(s) were outside of limits");
         }
         return;
     }
+    else
+    {
+        RCLCPP_INFO(rclcpp::get_logger("rclcpp"),
+                    "Planner SUCCEED, moving the left and right arm");
+        move_left_arm_group.move();
+        move_right_arm_group.move();
+    }
+    
 
 }
 

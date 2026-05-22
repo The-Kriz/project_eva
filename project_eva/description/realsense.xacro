@@ -2,12 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
     <link name="realsense"/>
-
-    <!--
-    The gazebo plugin aligns the depth data with the Z axis, with X=left and Y=up
-    ROS expects the depth data along the X axis, with Y=left and Z=up
-    This link only exists to give the gazebo plugin the correctly-oriented frame
-    -->
+    
     <link name="realsense_gazebo"/>
 
     <joint name="realsense_gazebo_joint" type="fixed">
@@ -76,8 +71,8 @@
 
     <joint type="fixed" name="realsense_lens_joint">
         <!-- Offset the camera 2cm backwards and 1cm up -->
-        <origin xyz="0.057 0 0.579" rpy="0 0 0" />
-        <parent link="leg" />
+        <origin xyz="0.057 0 0.476" rpy="0 0 0" />
+        <parent link="body" />
         <child link="realsense_lens" />
     </joint>
 

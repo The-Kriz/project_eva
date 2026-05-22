@@ -1,10 +1,13 @@
 moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
 
 moveit_simple_controller_manager:
+  publish_rate: 100
   controller_names:
     - left_arm_controller
     - right_arm_controller
     - head_controller
+    - left_finger_controller
+    - right_finger_controller
 
   left_arm_controller:
     action_ns: follow_joint_trajectory
@@ -29,6 +32,50 @@ moveit_simple_controller_manager:
       - right_elbow_joint
       - right_wrist_joint
       - right_hand_joint
+
+  left_finger_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - left_finger_4_link_1_joint
+      - left_finger_3_link_1_joint
+      - left_finger_2_link_1_joint
+      - left_finger_1_link_1_joint
+      - left_finger_4_link_2_joint
+      - left_finger_3_link_2_joint
+      - left_finger_2_link_2_joint
+      - left_finger_1_link_2_joint
+      - left_finger_4_link_3_joint
+      - left_finger_3_link_3_joint
+      - left_finger_2_link_3_joint
+      - left_finger_1_link_3_joint
+      - left_finger_5_link_1_joint
+      - left_finger_5_link_2_joint
+      - left_finger_5_link_3_joint
+
+
+  right_finger_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - right_finger_4_link_1_joint
+      - right_finger_3_link_1_joint
+      - right_finger_2_link_1_joint
+      - right_finger_1_link_1_joint
+      - right_finger_4_link_2_joint
+      - right_finger_3_link_2_joint
+      - right_finger_2_link_2_joint
+      - right_finger_1_link_2_joint
+      - right_finger_4_link_3_joint
+      - right_finger_3_link_3_joint
+      - right_finger_2_link_3_joint
+      - right_finger_1_link_3_joint
+      - right_finger_5_link_1_joint
+      - right_finger_5_link_2_joint
+      - right_finger_5_link_3_joint
+
 
   head_controller:
     action_ns: follow_joint_trajectory

@@ -11,8 +11,8 @@ TRANSFORMATION_MATRIX = [[0,  1, 0.255],
                          [0, -1, 0.255],
                          [1,  0, 0.255]]
 
-LINEAR_SPEED_MULTIPLIER = 5  # Adjust this value to control speed
-ANGULAR_SPEED_MULTIPLIER = -1*20
+LINEAR_SPEED_MULTIPLIER = 4  # Adjust this value to control speed
+ANGULAR_SPEED_MULTIPLIER = 15
 
 class ProjectEvaNode(Node):
     def __init__(self):
@@ -65,10 +65,10 @@ class ProjectEvaNode(Node):
         # return wheel_velocities
         
         # Adjust the order of wheel velocities
-        adjusted_wheel_velocities = [wheel_velocities[1], 
-                                     wheel_velocities[0],
-                                     wheel_velocities[3],
-                                     wheel_velocities[2]]
+        adjusted_wheel_velocities = [wheel_velocities[0], 
+                                     wheel_velocities[1],
+                                     wheel_velocities[2],
+                                     wheel_velocities[3]]
 
         print(adjusted_wheel_velocities)
         return adjusted_wheel_velocities
